@@ -163,8 +163,7 @@ def about():
 def contact():
     message_send = False
     if request.method == 'POST':
-        with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
-            connection.ehlo()
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as connection:
             connection.login(user=os.environ.get("my_mail"), password=os.environ.get("my_password"))
             message = f'Subject:New Message\n\n' \
                       f'Name : {request.form["name"]}\n' \
