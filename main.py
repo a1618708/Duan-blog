@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, flash
+from flask import Flask, render_template, redirect, url_for, flash, request
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
 from datetime import date
@@ -11,6 +11,8 @@ from functools import wraps
 from flask import abort
 from sqlalchemy.orm import relationship
 import os
+import smtplib
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get("SECRET_KEY")
@@ -157,9 +159,25 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["POST", "GET"])
 def contact():
-    return render_template("contact.html")
+    message_send = False
+    if request.method == 'POST':
+        with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
+            connection.starttls()
+            connection.login(user=os.environ.get("my_mail"), password=os.environ.get("my_password"))
+            message = f'Subject:New Message\n\n' \
+                      f'Name : {request.form["name"]}\n' \
+                      f'Mail : {request.form["email"]}\n' \
+                      f'Phone : {request.form["phone"]}\n' \
+                      f'Message : {request.form["message"]}\n'
+            connection.sendmail(from_addr=os.environ.get("my_mail"), to_addrs=os.environ.get("my_mail"), msg=message.encode("utf8"))
+        message_send = True
+        print(message_send)
+    return render_template("contact.html", message_send=message_send)
+
+
+
 
 @app.route("/new-post",methods=["POST","GET"])
 @admin_only
