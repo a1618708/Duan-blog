@@ -173,7 +173,6 @@ def contact():
                       f'Message : {request.form["message"]}\n'
             connection.sendmail(from_addr=os.environ.get("my_mail"), to_addrs=os.environ.get("my_mail"), msg=message.encode("utf8"))
         message_send = True
-        print(message_send)
     return render_template("contact.html", message_send=message_send)
 
 
