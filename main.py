@@ -159,20 +159,20 @@ def about():
     return render_template("about.html")
 
 
-@app.route("/contact", methods=[ "GET"])
-def contact():
-    message_send = False
-    # if request.method == 'POST':
-    #     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as connection:
-    #         connection.login(user=os.environ.get("my_mail"), password=os.environ.get("my_password"))
-    #         message = f'Subject:New Message\n\n' \
-    #                   f'Name : {request.form["name"]}\n' \
-    #                   f'Mail : {request.form["email"]}\n' \
-    #                   f'Phone : {request.form["phone"]}\n' \
-    #                   f'Message : {request.form["message"]}\n'
-    #         connection.sendmail(from_addr=os.environ.get("my_mail"), to_addrs=os.environ.get("my_mail"), msg=message.encode("utf8"))
-    #     message_send = True
-    return render_template("contact.html", message_send=message_send)
+# @app.route("/contact", methods=[ "GET"])
+# def contact():
+#     message_send = False
+#     # if request.method == 'POST':
+#     #     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as connection:
+#     #         connection.login(user=os.environ.get("my_mail"), password=os.environ.get("my_password"))
+#     #         message = f'Subject:New Message\n\n' \
+#     #                   f'Name : {request.form["name"]}\n' \
+#     #                   f'Mail : {request.form["email"]}\n' \
+#     #                   f'Phone : {request.form["phone"]}\n' \
+#     #                   f'Message : {request.form["message"]}\n'
+#     #         connection.sendmail(from_addr=os.environ.get("my_mail"), to_addrs=os.environ.get("my_mail"), msg=message.encode("utf8"))
+#     #     message_send = True
+#     return render_template("contact.html", message_send=message_send)
 
 
 

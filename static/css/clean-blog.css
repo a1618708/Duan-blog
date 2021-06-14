@@ -187,7 +187,7 @@ img::-moz-selection {
   text-transform: uppercase;
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
   #mainNav {
     border-bottom: 1px solid transparent;
     background: transparent;
@@ -208,7 +208,7 @@ img::-moz-selection {
   }
 }
 
-@media only screen and (min-width: 992px) {
+@media only screen and (min-width: 768px) {
   #mainNav {
     transition: background-color 0.2s;
     /* Force Hardware Acceleration in WebKit */
