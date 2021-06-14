@@ -486,6 +486,7 @@ footer .copyright {
 
 @media (min-width: 768px){
 .navbar-collapse.collapse {
+    display:block;
     height: auto!important;
     padding-bottom: 0;
     overflow: visible!important;
